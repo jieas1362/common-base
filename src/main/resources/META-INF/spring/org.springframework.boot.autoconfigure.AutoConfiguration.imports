@@ -1,0 +1,4 @@
+com.future.base.component.exception.ioc.ProExceptionHandler
+com.future.base.component.executor.ioc.ProExecutorConfiguration
+com.future.base.component.message.ioc.ProMessageLoadConfiguration
+com.future.base.component.common.ProApplicationContextUtil
