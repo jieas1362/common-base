@@ -2,11 +2,11 @@ package com.future.base.component.exception.handler.impl;
 
 import com.future.base.component.exception.handler.inter.ExceptionHandler;
 import com.future.base.component.exception.model.ExceptionInfo;
+import com.future.base.constant.common.ResponseElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.server.ResponseStatusException;
 
-import static com.future.base.util.base.ConstantProcessor.getResponseElementByStatus;
 
 /**
  * resp status exp handler
@@ -28,6 +28,6 @@ public final class ResponseStatusExceptionHandler implements ExceptionHandler {
     @Override
     public ExceptionInfo handle(Throwable throwable) {
         LOGGER.info("responseStatusExceptionHandler -> handle(Throwable throwable), throwable = {0}", throwable);
-        return new ExceptionInfo(getResponseElementByStatus(((ResponseStatusException) throwable).getStatus().value()));
+        return new ExceptionInfo(ResponseElement.get(((ResponseStatusException) throwable).getStatus().value()));
     }
 }

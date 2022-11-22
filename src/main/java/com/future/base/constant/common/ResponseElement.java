@@ -2,6 +2,10 @@ package com.future.base.constant.common;
 
 import org.springframework.http.HttpStatus;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * global exception info
  *
@@ -118,4 +122,15 @@ public enum ResponseElement {
         this.message = message;
     }
 
+    private static final Map<Integer, ResponseElement> map = Collections.unmodifiableMap(new HashMap<Integer, ResponseElement>() {
+        {
+            for (ResponseElement responseElement : ResponseElement.values()) {
+                put(responseElement.status, responseElement);
+            }
+        }
+    });
+
+    public static ResponseElement get(Integer status) {
+        return map.getOrDefault(status, BAD_REQUEST);
+    }
 }
